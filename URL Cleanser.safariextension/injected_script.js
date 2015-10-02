@@ -35,6 +35,8 @@ if (location.search !== "") {
 							  , "contentCollection"
 							  , "pgtype"
 							  , "_r"
+							  , "moduleDetail"
+							  , "contentID"
 							  ];
 
 		for (var i = parameters_to_clean.length - 1; i >= 0; i--) {
