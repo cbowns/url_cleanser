@@ -20,7 +20,7 @@ if (location.search !== "") {
 	};
 
 	// NYTimes:
-	nytimes_url = /(www)?\.nytimes\.com/;
+	nytimes_url = /(www\.)?nytimes\.com/;
 	if (nytimes_url.test(base_url)) {
 		// Parameters to remove:
 		parameters_to_clean = [
@@ -46,7 +46,7 @@ if (location.search !== "") {
 	}
 
 	// Macworld:
-	macworld_url_regex = /(www)?\.macworld\.com/;
+	macworld_url_regex = /(www\.)?macworld\.com/;
 	if (macworld_url_regex.test(base_url)) {
 		// Parameters to remove:
 		parameters_to_clean = [
