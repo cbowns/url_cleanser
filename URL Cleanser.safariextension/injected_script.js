@@ -37,6 +37,7 @@ if (location.search !== "") {
 							  , "contentCollection"
 							  , "pgtype"
 							  , "_r"
+							  , "referrer"
 							  , "moduleDetail"
 							  , "contentID"
 							  ];
