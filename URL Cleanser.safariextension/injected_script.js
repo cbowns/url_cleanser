@@ -81,3 +81,29 @@ if (location.search !== "") {
 		location.replace(query_params);
 	}
 }
+
+// For Medium Dot Com:
+
+// Note: this event doesn't get loaded in time to catch their redirect.
+// window.onhashchange = function(e) {
+// 		console.log("redirecting? current hash: " + window.location.hash)
+// };
+
+/*
+medium_url = /(www\.)?medium\.com/;
+if (medium_url.test(base_url)) {
+	console.log("looks like medium.")
+	// URL garbage to remove.
+	var regex = new RegExp ( "\#\.[a-zA-Z0-9]+");
+	console.log("regex: "+ regex)
+	url_href = url_href.replace(regex, '');
+	console.log ("new url: [" + url_href + "]");
+}
+
+// If the href has changed, update it.
+// Note: I don't think anything is doing this right now.
+if (location.href != url_href) {
+	console.log("loading new url: " + url_href)
+	location.href = url_href
+}
+*/
