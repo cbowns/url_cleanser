@@ -1,11 +1,13 @@
+url_href = location.href;
+query_params = location.search;
+base_url = location.hostname;
+
+console.log ("full url: [" + url_href + "]");
+console.log ("query params: [" + query_params + "]");
+console.log ("base url: [" + base_url + "]");
+
+// Code for query params.
 if (location.search !== "") {
-
-	query_params = location.search;
-	base_url = location.hostname;
-
-	// console.log ("location: [" + query_params + "]");
-	// console.log ("url: [" + base_url + "]");
-
 	// Remove tracking crap from Google Analytics:
 	google_parameters_to_clean = [
 							  , "utm_source"
@@ -71,8 +73,8 @@ if (location.search !== "") {
 
 	// If the string ends with the '?' character (no more GET variables left), remove it
 	query_params = query_params.replace(/[&?]$/, '');
-	
-	// If the href has changed, update it
+
+	// If we've updated the query params, modify them.
 	if (location.search != query_params) {
 		if (query_params == "") query_params = location.href.replace(location.search, "");
 		location.replace(query_params);
