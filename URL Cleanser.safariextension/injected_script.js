@@ -129,7 +129,6 @@ if (medium_url.test(base_url)) {
 }
 
 function cleanHash() {
-	console.log("cleanHash");
 	// Here's what we'll strip:
 	var regex = new RegExp("\#\.[a-zA-Z0-9]+");
 	console.log("regex: "+ regex);
