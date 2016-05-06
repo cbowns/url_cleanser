@@ -1,12 +1,21 @@
+function logURLs() {
+	new_url_href = location.href;
+	new_query_params = location.search;
+	new_base_url = location.hostname;
+	new_hash_url = location.hash;
+
+	console.log ("logURLs: full url: [" + new_url_href + "]");
+	console.log ("logURLs: query params: [" + new_query_params + "]");
+	console.log ("logURLs: base url: [" + new_base_url + "]");
+	console.log ("logURLs: url hash: [" + new_hash_url + "]");
+}
+
+logURLs();
+
+// Capture our location variables:
 url_href = location.href;
 query_params = location.search;
 base_url = location.hostname;
-hash_url = location.hash;
-
-console.log ("full url: [" + url_href + "]");
-console.log ("query params: [" + query_params + "]");
-console.log ("base url: [" + base_url + "]");
-console.log ("url hash: [" + hash_url + "]");
 
 // Code for query params.
 if (location.search !== "") {
