@@ -1,10 +1,12 @@
 url_href = location.href;
 query_params = location.search;
 base_url = location.hostname;
+hash_url = location.hash;
 
 console.log ("full url: [" + url_href + "]");
 console.log ("query params: [" + query_params + "]");
 console.log ("base url: [" + base_url + "]");
+console.log ("url hash: [" + hash_url + "]");
 
 // Code for query params.
 if (location.search !== "") {
@@ -82,28 +84,48 @@ if (location.search !== "") {
 	}
 }
 
-// For Medium Dot Com:
-
-// Note: this event doesn't get loaded in time to catch their redirect.
-// window.onhashchange = function(e) {
-// 		console.log("redirecting? current hash: " + window.location.hash)
-// };
-
 /*
+hi, Medium Dot Com:
+
+They set a tracking value to location.hash by pushing a history state after
+the page loads.
+
+It ends up with these nasty #.13b9e3c8u things on the end of otherwise fine URLs.
+
+We can defeat them by listening to window.onpopstate, and rewriting the history
+state object they pushed.
+*/
+
 medium_url = /(www\.)?medium\.com/;
 if (medium_url.test(base_url)) {
-	console.log("looks like medium.")
-	// URL garbage to remove.
-	var regex = new RegExp ( "\#\.[a-zA-Z0-9]+");
-	console.log("regex: "+ regex)
-	url_href = url_href.replace(regex, '');
-	console.log ("new url: [" + url_href + "]");
-}
+	console.log("looks like medium. installing an onpopstate handler.");
 
-// If the href has changed, update it.
-// Note: I don't think anything is doing this right now.
-if (location.href != url_href) {
-	console.log("loading new url: " + url_href)
-	location.href = url_href
+	window.onpopstate = function(e) {
+		current_hash = window.location.hash;
+		console.log("history state event. current hash: " + current_hash);
+
+		// Here's what we'll strip:
+		var regex = new RegExp ( "\#\.[a-zA-Z0-9]+");
+		console.log("regex: "+ regex);
+		new_hash = current_hash.replace(regex, '');
+		console.log ("new hash value: [" + new_hash + "]");
+		location.hash = new_hash;
+		console.log("removed. now:" + location.hash);
+
+		// Remove their pushed history state.
+		new_location_href = location.href
+		console.log("location href: " + new_location_href);
+		history.replaceState(null,null,location.href.substring(0,location.href.indexOf('#')));
+
+		// Verify it worked:
+		new_url_href = location.href;
+		new_query_params = location.search;
+		new_base_url = location.hostname;
+		new_hash_url = location.hash;
+
+		console.log ("new: full url: [" + new_url_href + "]");
+		console.log ("query params: [" + new_query_params + "]");
+		console.log ("base url: [" + new_base_url + "]");
+		console.log ("url hash: [" + new_hash_url + "]");
+	};
 }
-*/
