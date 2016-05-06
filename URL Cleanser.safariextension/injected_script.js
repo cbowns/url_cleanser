@@ -21,12 +21,12 @@ base_url = location.hostname;
 if (location.search !== "") {
 	// Remove tracking crap from Google Analytics:
 	google_parameters_to_clean = [
-							  , "utm_source"
-							  , "utm_medium"
-							  , "utm_campaign"
-							  , "utm_content"
-							  , "utm_term"
-							  ];
+		, "utm_source"
+		, "utm_medium"
+		, "utm_campaign"
+		, "utm_content"
+		, "utm_term"
+	];
 	for (var i = google_parameters_to_clean.length - 1; i >= 0; i--) {
 		var regex = new RegExp ("([&?])" + google_parameters_to_clean[i] + "=[^&]*(?:&|$)");
 		query_params = query_params.replace(regex, '$1');
@@ -37,21 +37,21 @@ if (location.search !== "") {
 	if (nytimes_url.test(base_url)) {
 		// Parameters to remove:
 		parameters_to_clean = [
-							  , "partner"
-							  , "emc"
-							  , "ribbon-ad-idx"
-							  , "src"
-							  , "module"
-							  , "version"
-							  , "region"
-							  , "action"
-							  , "contentCollection"
-							  , "pgtype"
-							  , "_r"
-							  , "referrer"
-							  , "moduleDetail"
-							  , "contentID"
-							  ];
+			, "partner"
+			, "emc"
+			, "ribbon-ad-idx"
+			, "src"
+			, "module"
+			, "version"
+			, "region"
+			, "action"
+			, "contentCollection"
+			, "pgtype"
+			, "_r"
+			, "referrer"
+			, "moduleDetail"
+			, "contentID"
+		];
 
 		for (var i = parameters_to_clean.length - 1; i >= 0; i--) {
 			var regex = new RegExp ("([&?])" + parameters_to_clean[i] + "=[^&]*(?:&|$)");
@@ -64,8 +64,8 @@ if (location.search !== "") {
 	if (macworld_url_regex.test(base_url)) {
 		// Parameters to remove:
 		parameters_to_clean = [
-							  , "lsrc"
-							  ];
+			, "lsrc"
+		];
 
 		for (var i = parameters_to_clean.length - 1; i >= 0; i--) {
 			var regex = new RegExp ("([&?])" + parameters_to_clean[i] + "=[^&]*(?:&|$)");
