@@ -2,12 +2,16 @@ function logURLs() {
 	new_url_href = location.href;
 	new_query_params = location.search;
 	new_base_url = location.hostname;
-	new_hash_url = location.hash;
-
 	console.log ("logURLs: full url: [" + new_url_href + "]");
 	console.log ("logURLs: query params: [" + new_query_params + "]");
 	console.log ("logURLs: base url: [" + new_base_url + "]");
-	console.log ("logURLs: url hash: [" + new_hash_url + "]");
+
+	logHash()
+}
+
+function logHash() {
+	new_hash_url = location.hash;
+	console.log ("logHash: url hash: [" + new_hash_url + "]");
 }
 
 logURLs();
@@ -107,39 +111,30 @@ state object they pushed.
 
 medium_url = /(www\.)?medium\.com/;
 if (medium_url.test(base_url)) {
-	console.log("looks like medium. installing an onpopstate handler.");
-	console.log("cleaning the URL while we're at it.")
-	logURLs();
-	cleanHash();
-	logURLs();
+	console.log("looks like medium. cleaning the URL now, .onload, and .onpopstate.");
+	logAndCleanHash();
 
 	window.onload=function(){
 		console.log("onload callback. cleaning the URL.");
-		logURLs();
-		cleanHash();
-		logURLs();
+		logAndCleanHash();
 	}
 
 	window.onpopstate = function(e) {
 		console.log("history state event. cleaning the URL.");
-		logURLs();
-		cleanHash();
-		logURLs();
+		logAndCleanHash()
 	};
+}
+
+function logAndCleanHash() {
+	logHash();
+	cleanHash();
+	logHash();
 }
 
 function cleanHash() {
 	// Here's what we'll strip:
 	var regex = new RegExp("\#\.[a-zA-Z0-9]+");
-	console.log("regex: "+ regex);
-	new_hash = location.hash.replace(regex, '');
-	console.log ("new hash value: [" + new_hash + "]");
+	current_hash = location.hash
+	new_hash = current_hash.replace(regex, '');
 	location.hash = new_hash;
-	console.log("removed. now:" + location.hash);
-
-	// Remove their pushed history state.
-	console.log("current location href: " + location.href);
-	new_location_href = location.href.substring(0,location.href.indexOf('#'))
-	console.log("new location: "+ location.href.substring(0,location.href.indexOf('#')));
-	history.replaceState(null,null,new_location_href);
 }
