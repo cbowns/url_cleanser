@@ -27,7 +27,7 @@
 		</dict>
 	</dict>
 	<key>Description</key>
-	<string>Removes many of the common tracking variables that web publishers append to URLs. (A fork of url_cleanser, originally https://github.com/akirk/url_cleanser)</string>
+	<string>Removes many of the common tracking variables that web publishers append to URLs.</string>
 	<key>DeveloperIdentifier</key>
 	<string>0000000000</string>
 	<key>ExtensionInfoDictionaryVersion</key>
