@@ -12,7 +12,7 @@ This extension allows these requests to go through to the server, but it redirec
 
 # Installation
 
-[Here's a direct link for 1.0](https://github.com/cbowns/url_cleanser/raw/1.0.0/URL%20Cleanser.safariextz). More info is available on [its release page](https://github.com/cbowns/url_cleanser/releases/tag/1.0.0).
+[Here's a direct link for 1.0](https://github.com/cbowns/url_cleanser/releases/download/1.0.0/URL.Cleanser.safariextz). More info is available on [its release page](https://github.com/cbowns/url_cleanser/releases/tag/1.0.0).
 
 It will be available on Apple's Safari Extensions page once their review is complete.
 
