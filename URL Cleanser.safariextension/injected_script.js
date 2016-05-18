@@ -55,6 +55,11 @@ if (location.search !== "") {
 			, "referrer"
 			, "moduleDetail"
 			, "contentID"
+			, "rref"
+			, "ref"
+			, "clickSource"
+			, "WT.nav"
+			, "hp"
 		];
 
 		for (var i = parameters_to_clean.length - 1; i >= 0; i--) {
